@@ -1,3 +1,3 @@
-def DockingStation
+class DockingStation
 
 end
