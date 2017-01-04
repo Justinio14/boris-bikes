@@ -1,4 +1,5 @@
 require "docking_station"
+#require_relative "bike"
 
   describe DockingStation do
   it { is_expected.to respond_to :release_bike }
