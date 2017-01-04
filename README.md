@@ -1,1 +1,2 @@
-Project to recreate a simplified version of the boris bikes system
+Project to recreate a simplified version of the Boris bikes system.
+Pair project with Justin 
