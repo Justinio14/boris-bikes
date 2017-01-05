@@ -5,6 +5,8 @@ require "docking_station"
   it { is_expected.to respond_to :release_bike }
 
   it 'releases working bikes' do
+    bike = Bike.new
+    subject.dock_bike(bike)
    bike = subject.release_bike
    expect(bike).to be_working
 
@@ -19,9 +21,24 @@ require "docking_station"
    expect(subject.dock_bike(bike)).to eq bike
  end
 
- it 'raises an error if dock empyty' do
-   subject.release_bike
-   expect {subject.release_bike}.to raise_error("Empty dock")
+
+
+   describe '#release_bike' do
+   it 'releases a bike' do
+     bike = Bike.new
+     subject.dock_bike(bike)
+     # we want to release the bike we docked
+     expect(subject.release_bike).to eq bike
+   end
+
+
+   describe '#release_bike' do
+     it 'raises an error if dock empyty' do
+     # subject.release_bike
+     expect {subject.release_bike}.to raise_error 'Empty dock'
+   end
+ end
+
  end
 
 
