@@ -9,28 +9,24 @@ class DockingStation
   end
 
   def release_bike
-    empty?(@docked)
-    #raise "Empty dock" if @docked.empty?
+    raise "Empty dock" if empty?
     #@bike = @docked
     @docked.pop
     #@bike
   end
 
   def dock_bike(bike)
-    full?(@docked.count)
-    #raise "Full dock" if @docked.count > 19
+    raise "Full dock" if full?
     #@bike = bike
     @docked << bike
   end
 
-  def full?(count)
-    if count > 19
-      raise "Full dock"
-    end
+  def full?
+    @docked.count > 19
   end
 
-  def empty?(arr)
-    raise "Empty dock" if arr.empty?
+  def empty?
+    @docked.empty?
   end
 
 end
