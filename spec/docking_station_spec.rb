@@ -18,15 +18,13 @@ require "docking_station"
    bike = Bike.new
    #subject.dock_bike(bike)
    # We want to return the bike we dock
-   expect(subject.dock_bike(bike)).to eq bike
+   expect(subject.dock_bike(bike)).to eq [bike]
  end
 
   it "gives an error when docking station is full" do
-    bike = Bike.new
-    bike2 = Bike.new
-    subject.dock_bike(bike)
-    expect{subject.dock_bike(bike2)}.to raise_error 'Full dock'
-  end 
+  20.times { subject.dock_bike(Bike.new) }
+    expect{subject.dock_bike(Bike.new)}.to raise_error 'Full dock'
+  end
 
    describe '#release_bike' do
    it 'releases a bike' do
