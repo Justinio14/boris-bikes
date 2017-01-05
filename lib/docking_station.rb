@@ -4,12 +4,15 @@ class DockingStation
 
   attr_reader :bike
 
-  # def initialize(bike = nil)
-  #  @bike = bike
-  #end
+  def initialize
+    @bike = true
+  end
 
   def release_bike
-    Bike.new
+    raise "Empty dock" if !@bike
+    bike = Bike.new
+    @bike = nil 
+    bike
   end
 
   def dock_bike(bike)

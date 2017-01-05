@@ -19,6 +19,11 @@ require "docking_station"
    expect(subject.dock_bike(bike)).to eq bike
  end
 
+ it 'raises an error if dock empyty' do
+   subject.release_bike
+   expect {subject.release_bike}.to raise_error("Empty dock")
+ end
+
 
 
 
