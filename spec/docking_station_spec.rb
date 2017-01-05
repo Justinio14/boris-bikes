@@ -16,12 +16,17 @@ require "docking_station"
 
   it 'docks something' do
    bike = Bike.new
-   subject.dock_bike(bike)
+   #subject.dock_bike(bike)
    # We want to return the bike we dock
    expect(subject.dock_bike(bike)).to eq bike
  end
 
-
+  it "gives an error when docking station is full" do
+    bike = Bike.new
+    bike2 = Bike.new
+    subject.dock_bike(bike)
+    expect{subject.dock_bike(bike2)}.to raise_error 'Full dock'
+  end 
 
    describe '#release_bike' do
    it 'releases a bike' do
@@ -38,6 +43,7 @@ require "docking_station"
      expect {subject.release_bike}.to raise_error 'Empty dock'
    end
  end
+
 
  end
 
