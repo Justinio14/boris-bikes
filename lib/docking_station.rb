@@ -5,7 +5,7 @@ class DockingStation
   attr_reader :docked
 
   def initialize
-    @docked = []
+      @docked = []
   end
 
   def release_bike
@@ -21,6 +21,7 @@ class DockingStation
     @docked << bike
   end
 
+  private
   def full?
     @docked.count > 19
   end

@@ -36,7 +36,7 @@ require "docking_station"
 
 
    describe '#release_bike' do
-     it 'raises an error if dock empyty' do
+     it 'raises an error if dock empty' do
      # subject.release_bike
      expect {subject.release_bike}.to raise_error 'Empty dock'
    end
