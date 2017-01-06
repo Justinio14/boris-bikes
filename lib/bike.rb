@@ -8,5 +8,10 @@ class Bike
 
   def working?
     @working
+    #@broken = true
   end
+
+  #def report_broken
+  #  @broken
+  #end
 end
