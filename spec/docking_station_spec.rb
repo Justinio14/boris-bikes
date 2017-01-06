@@ -20,7 +20,8 @@ require "docking_station"
   end
 
   it "gives an error when docking station is full" do
-    DockingStation::DEFAULT_CAPACITY.times { subject.dock_bike(Bike.new) }
+    #DockingStation::DEFAULT_CAPACITY.times { subject.dock_bike(Bike.new) }
+    subject.capacity.times { subject.dock_bike(Bike.new) }
     expect{subject.dock_bike(Bike.new)}.to raise_error 'Full dock'
   end
 
@@ -34,7 +35,6 @@ require "docking_station"
 
    describe '#release_bike' do
      it 'raises an error if dock empty' do
-     # subject.release_bike
      expect {subject.release_bike}.to raise_error 'Empty dock'
    end
  end
@@ -42,9 +42,9 @@ require "docking_station"
  describe '#capacity' do
    it 'Allow user to set capacity of docking station' do
      # Create a new station with 50 bikes and test
-     num = 50
-     station = DockingStation.new(num)
-     expect(station.capacity).to eq num
+     capacity = 50
+     station = DockingStation.new(capacity)
+     expect(station.capacity).to eq capacity
 
      # Create a default station using the DEFAULT_CAPACITY constant
      station = DockingStation.new
