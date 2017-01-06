@@ -2,11 +2,14 @@ require_relative 'bike'
 
 class DockingStation
 
+  DEFAULT_CAPACITY = 20
+
   attr_reader :docked
 
   def initialize
       @docked = []
   end
+
 
   def release_bike
     raise "Empty dock" if empty?
@@ -23,7 +26,7 @@ class DockingStation
 
   private
   def full?
-    @docked.count > 19
+    @docked.count >= DEFAULT_CAPACITY
   end
 
   def empty?
