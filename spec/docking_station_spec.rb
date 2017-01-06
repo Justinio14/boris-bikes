@@ -1,6 +1,5 @@
 require "docking_station"
 
-
   describe DockingStation do
   it { is_expected.to respond_to :release_bike }
 
@@ -9,23 +8,24 @@ require "docking_station"
     subject.dock_bike(bike)
    bike = subject.release_bike
    expect(bike).to be_working
-
   end
 
   it { is_expected.to respond_to(:dock_bike).with(1).argument }
 
   it 'docks something' do
-   bike = Bike.new
-   #subject.dock_bike(bike)
-   # We want to return the bike we dock
+    bike = Bike.new
+    #subject.dock_bike(bike)
+    # We want to return the bike we dock
    expect(subject.dock_bike(bike)).to eq [bike]
- end
+  end
 
   it "gives an error when docking station is full" do
-  DockingStation::DEFAULT_CAPACITY.times { subject.dock_bike(Bike.new) }
+    #DockingStation::DEFAULT_CAPACITY.times { subject.dock_bike(Bike.new) }
+    subject.capacity.times { subject.dock_bike(Bike.new) }
     expect{subject.dock_bike(Bike.new)}.to raise_error 'Full dock'
   end
 
+<<<<<<< HEAD
   it "notifys when bike broken" do
     bike = Bike.new
     subject.dock_bike(bike,false)
@@ -33,6 +33,9 @@ require "docking_station"
   end
 
    describe '#release_bike' do
+=======
+  describe '#release_bike' do
+>>>>>>> 9c1e8cfbd696175f2c230ab6aa09babc984f3886
    it 'releases a bike' do
      bike = Bike.new
      subject.dock_bike(bike)
@@ -40,29 +43,25 @@ require "docking_station"
      expect(subject.release_bike).to eq bike
    end
 
-
    describe '#release_bike' do
      it 'raises an error if dock empty' do
-     # subject.release_bike
      expect {subject.release_bike}.to raise_error 'Empty dock'
    end
  end
 
-  describe '#capacity' do
+ describe '#capacity' do
    it 'Allow user to set capacity of docking station' do
      # Create a new station with 50 bikes and test
-     num = 50
-     station = DockingStation.new(num)
-     expect(station.capacity).to eq num
+     capacity = 50
+     station = DockingStation.new(capacity)
+     expect(station.capacity).to eq capacity
 
      # Create a default station using the DEFAULT_CAPACITY constant
      station = DockingStation.new
      expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
-   end
-
+    end
   end
-
- end
+end
 
 
 
