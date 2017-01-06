@@ -4,10 +4,11 @@ class DockingStation
 
   DEFAULT_CAPACITY = 20
 
-  attr_reader :docked
+  attr_reader :docked, :capacity
 
-  def initialize
+  def initialize(capacity=DEFAULT_CAPACITY)
       @docked = []
+      @capacity = capacity
   end
 
 
@@ -26,7 +27,7 @@ class DockingStation
 
   private
   def full?
-    @docked.count >= DEFAULT_CAPACITY
+    @docked.count >= @capacity
   end
 
   def empty?

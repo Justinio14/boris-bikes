@@ -42,6 +42,19 @@ require "docking_station"
    end
  end
 
+  describe '#capacity' do
+   it 'Allow user to set capacity of docking station' do
+     # Create a new station with 50 bikes and test
+     num = 50
+     station = DockingStation.new(num)
+     expect(station.capacity).to eq num
+
+     # Create a default station using the DEFAULT_CAPACITY constant
+     station = DockingStation.new
+     expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+   end
+
+  end
 
  end
 
