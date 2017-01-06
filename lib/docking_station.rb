@@ -19,9 +19,12 @@ class DockingStation
     #@bike
   end
 
-  def dock_bike(bike)
+  def dock_bike(bike, working = true)
     raise "Full dock" if full?
-    #@bike = bike
+    if working == false
+      bike.working = false
+    end
+
     @docked << bike
   end
 

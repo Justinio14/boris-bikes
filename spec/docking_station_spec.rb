@@ -26,6 +26,12 @@ require "docking_station"
     expect{subject.dock_bike(Bike.new)}.to raise_error 'Full dock'
   end
 
+  it "notifys when bike broken" do
+    bike = Bike.new
+    subject.dock_bike(bike,false)
+    expect(bike.working?).to eq false
+  end
+
    describe '#release_bike' do
    it 'releases a bike' do
      bike = Bike.new
